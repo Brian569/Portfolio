@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for text in texts %}
+<div class="container">
+   <div class="row">
+       <div class="col-md-6">
+        <h1 class="text-center">  {{text.name}}</h1>
+    
+        <h3>About</h3>
+        
+        {% autoescape on %}
+            
+        <p> {{text.about_text|safe}} </p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi blanditiis ratione veniam neque, obcaecati molestias, alias iste excepturi laborum commodi temporibus laboriosam itaque, consequuntur velit pariatur quam unde. Praesentium aperiam consectetur doloremque mollitia temporibus sed, nam assumenda blanditiis, commodi voluptatem in quod maiores distinctio neque optio iusto! Repudiandae impedit nobis quibusdam, assumenda eius eaque ex vitae sit beatae omnis quidem totam, ratione mollitia et magni fuga! Suscipit eaque, est possimus aliquid delectus vel sunt fugiat quod error, excepturi hic aspernatur odit nemo doloribus aliquam veniam perspiciatis architecto nobis ad neque. Nisi, molestiae. Beatae accusamus perferendis, consequuntur saepe minima maiores natus?</p>
+    
+        {% endautoescape %}
+       </div>
+       <div class="col-md-6">
+
+           <div class="hexagon-gallery">
+            <div class="hex"><img src=" {{text.about_image.url}}" alt="some"></div>
+      
+
+           </div>
+
+        <br><br><br><br><br><br><br><br><br><br>
+       </div>
+   </div>
+          
+</div>
+<hr>
+{% endfor %}
+
+<style>
+ img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.hexagon-gallery {
+  margin: auto;
+  /* margin-top: 50px; */
+  max-width: 500px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-auto-rows: 200px;
+  grid-gap: 14px;
+  padding-bottom: 50px;
+}
+
+.hex {
+  display: flex;
+  position: relative;
+  width: 350px;
+  height: 375px;
+  background-color: #424242;
+  -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+/* 
+.hex:first-child {
+  grid-row-start: 1;
+  grid-column: 2 / span 2;
+} */
+
+</style>
+
+{% endblock content %}
+    
